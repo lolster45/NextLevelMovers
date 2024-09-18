@@ -1,0 +1,141 @@
+.contact-page {
+    padding-top: 90px;
+    height: auto;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .service-section {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+        width: 90%;
+        padding-bottom: 30px;
+        > h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+        .service-cards-wrap {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            row-gap: 20px;
+            width: 100%;
+            .service-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-evenly;
+                height: 300px;
+                min-width: 220px;
+                max-width: 270px;
+                background-color: white;
+
+                opacity: 0;
+                transform: translateY(100px);
+                transition: opacity 1s ease, transform 1s ease;
+
+
+                svg {
+                    font-size: 4rem;
+                    color: var(--red-color);
+                }
+                h2 {
+                    text-align: center;
+                    //background-color: red;
+                }
+                p {
+                    text-align: center;
+                    //background-color: green;
+                }
+
+                &.fadeIn {
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
+            }
+        }
+    }
+    .locations {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        width: 100%;
+        padding: 30px;
+        padding-bottom: 50px;
+
+        
+        h2 {
+            height: 30%;
+            width: 100%;
+            font-size: 3.5rem;
+            text-align: center;
+
+            opacity: 0;
+            transform: translateY(100px);
+            transition: opacity 1s ease, transform 1s ease;
+
+            &.fadeIn {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+
+
+        }
+        .location-wrap {
+            display: flex;
+            justify-content: center;
+            height: 50%;
+            width: 100%;
+            gap: 20px;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: opacity 1s ease, transform 1s ease;
+
+
+            ul {
+                margin-top: 10px;
+                list-style: none;
+                li {
+                    color: rgb(57, 57, 57);
+                    font-size: 0.9rem;
+                    text-align: center;
+                }
+            }
+
+            &.fadeIn {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .contact-page {
+        .locations {    
+            h2 {
+                font-size: 2.5rem;
+            }
+            .location-wrap {
+                flex-wrap: wrap;
+                ul {
+                    margin-top: 10px;
+                    list-style: none;
+                    li {
+                        color: rgb(57, 57, 57);
+                        font-size: 0.9rem;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

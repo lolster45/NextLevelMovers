@@ -1,0 +1,133 @@
+.contact-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    gap: 80px;
+    padding: 70px;
+    background-color: var(--red-color);
+    > div, form{
+        height: 80%;
+        width: 30%;
+        padding: 20px;
+    }
+    .left-contact {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(100px);
+        transition: opacity 1s ease, transform 1s ease;
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 4px 3px 0 black;
+        }
+        p {
+            color: black;
+            font-weight: bolder;
+        }
+
+        &.fadeIn {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
+    .form-wrap {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: auto;
+        width: 30%;
+        padding: 10px;
+
+        > div {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        label {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            //background-color: blue;       
+        }
+        .phone-label {
+            width: 100%;
+        }
+        .input-design {
+            margin-top: 10px;
+            height: 40px;
+            padding-left: 15px;
+            border: 1px solid rgb(255, 0, 0);
+            border: none;
+            outline: none;
+            font-weight: bolder;
+        }
+        button {
+            cursor: pointer;
+            height: 40px;
+            width: 100%;
+            margin-top: 30px;
+            color: white;
+            background-color: black;
+        }
+
+
+        opacity: 0;
+        transform: translateY(100px);
+        transition: opacity 1s ease, transform 1s ease;
+        &.fadeIn {
+            opacity: 1;
+            transform: translateY(0px);
+        }    
+
+
+    }
+}
+@media only screen and (max-width: 999px) {
+    .contact-section {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        flex-direction: column;
+        gap: 20px;
+        .left-contact {
+            text-align: center;
+            width: 90%;
+        }
+        .form-wrap {
+            width: 90%;
+        }
+    }
+}
+@media only screen and (max-width: 500px) {
+    .contact-section {
+        padding: 10px;
+        .left-contact {
+            h1 {
+                font-size: 2.3rem;
+            }
+            p {
+               font-size: 0.9rem;
+            }
+        }
+        .form-wrap {  
+            .zip-location-wrap {
+                flex-direction: column;
+                label {
+                    width: 100%;
+                }
+            }
+            .first-last-name-wrap {
+                flex-direction: column;
+                label {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

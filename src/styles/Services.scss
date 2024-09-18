@@ -1,0 +1,119 @@
+.services {
+    height: auto;
+    width: 100%;
+    padding: 60px;
+    background-color: rgb(247, 247, 247);
+
+
+    > h2 {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 30px;
+        //background-color: green;
+
+        opacity: 0;
+        transform: translateY(100px);
+        transition: opacity 2s ease, transform 1s ease;
+
+
+        &.fadeIn {
+            opacity: 1;
+            transform: translateY(0px);
+
+        }
+    }
+
+    .service-card-wrap {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        width: 100%;
+        gap: 50px;
+
+
+
+
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            width: 100%;
+            background-color: white;
+
+            opacity: 0;
+            transform: translateY(100px);
+            transition: opacity 2s ease, transform 1s ease;
+
+
+            img {
+                object-fit: cover;
+                height: 280px;
+                width: 100%;
+            }
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: auto;
+                padding: 15px;
+                color: var(--footer-gray);
+                background-color: transparent;
+                h2 {
+                    margin-bottom: 10px;
+                    color: black;
+                }
+                p {
+                    margin-bottom: 20px;
+                    font-size: 0.8rem;
+                    color: black;
+                }
+                button {
+                    cursor: pointer;
+                    border: none;
+                    outline: none;
+                    height: 40px;
+                    width: 150px;
+                    background-color: var(--red-color);
+                }
+            }
+
+            &.fadeIn {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 900px) {
+    .services {
+        padding-left: 30px;
+        padding-right: 30px;
+        .service-card-wrap {
+            grid-template-columns: repeat(1, 1fr);          
+            .card {
+                img {
+                }
+    
+                div {
+                    h2 {
+                    }
+                    p {
+                    }
+                    button {
+                    }
+    
+                }
+            }
+        }
+    }
+    
+}
+@media only screen and (max-width: 600px) {
+
+}
+@media only screen and (max-width: 600px) {
+
+}

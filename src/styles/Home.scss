@@ -1,0 +1,302 @@
+.home-page {
+    position: relative;
+    z-index: 1;
+    height: auto;
+    width: 100%;
+    .background-video {
+        position: relative;
+        height: 100vh;
+        width: 100%;
+        overflow-x: hidden;
+        object-fit: cover;
+        .video-background {
+            overflow-x: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw; // Ensure the video covers the entire area
+            z-index: -1;        // Ensures the video stays behind the content
+
+            object-fit: cover;
+
+            transition: transform 0.1s ease-out;  // Smooth movement on scroll
+
+        }
+        .black-overlay {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            padding-left: 100px;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(4, 4, 4, 0.322);
+            .overlay-text {
+                opacity: 0;
+                transform: translateY(130px);
+                transition: opacity 1s ease, transform 1s ease;
+                position: absolute;
+                text-align: center;
+                color: white;  // Ensures text is visible on the background
+                z-index: 1;    // Keeps the text above the image
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start; 
+                width: 50%;
+                h1 {
+                    text-align: start;
+                    font-size: 4rem;
+                    margin-bottom: 10px;
+                }
+                .main-contact {
+                    gap: 10px;
+                    margin-top: 30px;
+                    height: auto;
+                    display: flex;
+                    .contact{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        justify-content: center;
+                        padding: 20px;
+                        height: 130px;
+                        width: 240px;
+                        gap: 10px;
+                        div {
+                            text-align: start;
+                        }
+                        &.left {
+                            background-color: black;
+                        }
+                        &.right {
+                            background-color: orangered;
+                            div:first-of-type {
+                                color: black;
+                                font-weight: bolder;
+                            }
+                        }
+                    }
+
+                    .contact-right {
+
+                    }
+                }
+                &.fadeIn {
+                    opacity: 1;
+                    transform: translateY(0px);
+
+                }
+                
+            }
+        }
+    }
+    .info {
+        position: relative;
+        display: flex;
+        align-items: center;
+        height: 400px;
+        width: 100%;
+        background-color: white;
+        .info-left {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            height: 85%;
+            width: 50%;
+            background-color: white;
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                padding: 10px;
+                &:nth-of-type(1) {
+                    border-right: 1px solid black;
+                    border-bottom: 1px solid black;
+                    transition: visibility 2s ease;
+                }
+                &:nth-of-type(2) {
+                    border-bottom: 1px solid black;
+                }
+                &:nth-of-type(3) {
+                 border-right: 1px solid black;
+                }
+                .number {
+                    font-size: 4rem;
+                    color: black;
+                    font-weight: bolder;
+                    transition: all 0.2s ease-in-out;
+                }
+                p {
+                    text-align: center;
+                }
+            }
+        }
+        img {
+            height: 85%;
+            width: 50%;
+            object-fit: cover;
+        }
+    }
+    .reviews-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 20px;
+        height: auto;
+        padding: 40px;
+        background-color: black;
+        h2 {
+            width: 100%;
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: white;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: transform 1s ease, opacity 1s ease;   
+            &.fadeIn {
+                opacity: 1;
+                transform: translateY(0px);
+            }
+        }
+        > div {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 180px;
+            width: 50%;
+            color: white; 
+            .slick-slide div {
+                display: flex !important;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: auto;
+            }
+            p {
+                margin-bottom: 20px;
+                text-align: center;
+                height: 80%;
+                width: 50%;
+                line-height: 30px;
+                font-size: 0.7rem;
+                color: inherit;
+            }
+            h3 {
+                text-align: center;
+                width: 50%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .home-page {
+
+        .background-video {
+
+            .video-background {
+               
+                height: 100%;
+    
+            }
+
+
+            .black-overlay {
+
+                .overlay-text {
+
+                    h1 {
+                        font-size: 3rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .home-page {
+        .info {
+            flex-direction: column;
+            height: 550px;
+            .info-left {
+                width: 100%;
+            }
+            img {
+                width: 100%;
+            }
+        }
+        .reviews-container {
+            > div {
+                p {
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .home-page {
+        .background-video {
+            .black-overlay {
+                padding-left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .overlay-text {
+                    width: 95%;
+                    h1 {
+                        font-size: 2.2rem;
+                        width: 100%;
+                        text-align: center;
+                    }
+                    .main-contact {
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        .contact{
+                            &.left {
+                                height: 100px;
+                            }
+                            &.right {
+                                height: 100px;
+                                div:first-of-type {
+                                }
+                            }  
+                        }
+                    }
+                }
+            }
+        }
+        .reviews-container {
+            h2 {
+                font-size: 2.2rem;
+            }
+        }
+        .info {
+            .info-left {
+                padding: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .home-page {
+        .reviews-container {
+            > div {
+              width: 90%;
+            }
+        }
+    }
+}
+
+
