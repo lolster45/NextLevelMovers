@@ -1,3 +1,4 @@
+//React...
 import React from 'react';
 
 //Components...
@@ -15,12 +16,11 @@ import { useInView } from 'react-intersection-observer';
 //Styles...
 import '../styles/ContactPage.scss'
 
-const Contact = () => {
+const Contact = ({contactSectionRef}) => {
 
 
     const { ref: ref2, inView: inView2 } = useInView({threshold: 0.1, triggerOnce: true});
     const { ref: ref3, inView: inView3 } = useInView({threshold: 0.1, triggerOnce: true});
-
 
     const serviceCardsData = [
         {
@@ -44,7 +44,6 @@ const Contact = () => {
             description: 'Yard work, painting, cleaning, junk removal, and more'
         }
     ];
-
 
     return (
         <div className='contact-page'>
@@ -111,7 +110,7 @@ const Contact = () => {
                 referrerPolicy="no-referrer-when-downgrade"
             >
             </iframe>
-            <ContactSection/>
+            <ContactSection contactSectionRef={contactSectionRef}/>
         </div>
     );
 };

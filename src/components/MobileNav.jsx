@@ -18,7 +18,6 @@ const MobileNav = ({mobileNav, setMobileNav}) => {
 
 
     const handleNavClick = () => {
-
         setMobileNav(prev => !prev)
     }
 

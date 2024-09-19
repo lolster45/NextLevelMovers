@@ -1,3 +1,4 @@
+//React...
 import React, {useEffect} from 'react';
 
 //Components...
@@ -8,19 +9,16 @@ import ContactSection from '../components/ContactSection';
 //React observer...
 import { useInView } from 'react-intersection-observer';
 
-
 //Carousel...
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
 //Styles...
 import '../styles/Home.scss'
 
 
-
-const Home = () => {
+const Home = ({contactSectionRef}) => {
 
 
     const { ref, inView } = useInView({threshold: 0.1, triggerOnce: true});
@@ -58,18 +56,6 @@ const Home = () => {
       }, []);
 
 
-    useEffect(() => {
-        //console.log("changed")
-    }, inView)
-
-
-    if(inView3) {
-
-        console.log('inView3 changed')
-    }
-
-
-
     return (
         <div className='home-page'>
             <section className='background-video'>
@@ -97,7 +83,6 @@ const Home = () => {
                 </div>
             </section> 
             <Services/>
-
             <section className="reviews-container">
                 <h2 ref={ref2} className={`${inView2 ? 'fadeIn' : ''}`}>Our Happy Custumors</h2>
                 <Slider {...settings}>
@@ -118,9 +103,7 @@ const Home = () => {
                         <h3>Andrew S.</h3>
                     </div>
                 </Slider>
-            </section>
-
-            
+            </section>  
             <section className="info">
                 <div className='info-left'>
                     <div ref={ref3}>
@@ -150,11 +133,7 @@ const Home = () => {
                 </div>
                 <img src="https://www.usnews.com/dims4/USNEWS/be2ed29/2147483647/thumbnail/970x647/quality/85/?url=https%3A%2F%2Fwww.usnews.com%2Fcmsmedia%2F97%2Fa9%2F30d751a044c29bb00bead735dee8%2F211005-moving-company-stock-stock.jpg" alt="picture of company moving boxes" />
             </section>
-
-
-
-
-            <ContactSection/> 
+            <ContactSection contactSectionRef={contactSectionRef}/>  
         </div>
     );
 };

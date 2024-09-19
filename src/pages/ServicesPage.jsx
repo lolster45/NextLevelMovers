@@ -1,17 +1,19 @@
+//React...
 import React from 'react';
+
+//Components...
 import Services from '../components/Services';
+import ContactSection from '../components/ContactSection';
 
 //Styles...
 import '../styles/ServicesPage.scss'
-import ContactSection from '../components/ContactSection';
 
-const ServicesPage = () => {
+const ServicesPage = ({contactSectionRef}) => {
     return (
         <div className='services-page'>
             <h1>Hour </h1>
-
             <Services/>
-            <ContactSection/>
+            <ContactSection contactSectionRef={contactSectionRef}/>
         </div>
     );
 };

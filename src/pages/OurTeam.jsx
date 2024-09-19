@@ -1,3 +1,4 @@
+//React...
 import React from 'react';
 
 //Components...
@@ -6,14 +7,10 @@ import ContactSection from '../components/ContactSection';
 //React observer...
 import { useInView } from 'react-intersection-observer';
 
-
 //Styles...
 import '../styles/OurTeam.scss'
 
-const OurTeam = () => {
-
-
-    const { ref, inView } = useInView({threshold: 0.8, triggerOnce: true});
+const OurTeam = ({contactSectionRef}) => {
 
     const teamMembers = [
         {
@@ -42,13 +39,8 @@ const OurTeam = () => {
         }
     ];
     
-
-
-
     return (
         <div className='ourTeam-page'>
-
-
             <div className='team-members-wrap'>
                 <h2>Professional In their field</h2>
                 <div>
@@ -68,16 +60,11 @@ const OurTeam = () => {
                                     <p>{person.description}</p>
                                 </div>
                             </div>
-
                         )
-                    })
-
-                    }
+                    })}
                 </div>
             </div>
-
-            <ContactSection/>
-
+            <ContactSection contactSectionRef={contactSectionRef}/>
         </div>
     );
 };

@@ -154,6 +154,10 @@
         color: white;
         background-color: black;
 
+        .hover-glow:hover {
+            color: red;
+        }
+
         h2 {
             font-size: 1rem;
         }
@@ -200,14 +204,31 @@
                 margin-bottom: 20px;
             }
             ul {
+                display: flex;
+                flex-direction: column;
                 font-size: 0.8rem;
                 list-style: none;
-                li {
+                a {
+                    text-decoration: none;
                     cursor: pointer;
                     color: var(--footer-gray);
                     margin-bottom: 5px;
+                  
 
                 }
+
+                li {
+                    display: flex;
+                    a {
+                        margin-right: 10px;
+                        svg {
+                            color: var(--red-color);
+                            font-size: 1.1rem;
+                        }
+                    }
+                }
+
+
             }
         }
 

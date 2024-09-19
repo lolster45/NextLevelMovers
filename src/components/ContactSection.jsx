@@ -1,3 +1,4 @@
+//React...
 import React, { useState } from 'react';
 
 //React observer...
@@ -6,9 +7,9 @@ import { useInView } from 'react-intersection-observer';
 //Styles...
 import '../styles/ContactSection.scss'
 
-const ContactSection = () => {
+const ContactSection = ({contactSectionRef}) => {
 
-
+    const [formSuccess, setFormSuccess] = useState("");
     const [contactForm, setContactForm] = useState({
         firstName: '',
         lastName: '',
@@ -17,6 +18,12 @@ const ContactSection = () => {
         email: ''
     })
 
+    const { ref, inView } = useInView({threshold: 0.1, triggerOnce: true});
+    const { ref: ref2, inView: inView2 } = useInView({threshold: 0.1, triggerOnce: true});
+
+
+    //Regular expression for email from user...
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const handleFormChange = (e) => {
         const {name, value} = e.target;
 
@@ -26,42 +33,45 @@ const ContactSection = () => {
         }))
     }
 
-    const { ref, inView } = useInView({threshold: 0.1, triggerOnce: true});
-    const { ref: ref2, inView: inView2 } = useInView({threshold: 0.1, triggerOnce: true});
-
-
-
-
-    //Regular expression for email from user...
-    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if(contactForm.firstName && contactForm.lastName && contactForm.fromZip && contactForm.toZip && contactForm.email){
-  
-          if(!emailPattern.test(contactForm.email)) {
-            //setEmailIsInvalid(true);
-            return;
-          }
-
-          sendEmail(e);
-           setContactForm({
+        try {
+            if(contactForm.firstName && contactForm.lastName && contactForm.fromZip && contactForm.toZip && contactForm.email){
+      
+              if(!emailPattern.test(contactForm.email)) {
+                return;
+              }              
+    
+              sendEmail(e);
+              setFormSuccess('Thank You For Your Submission!');
+              setContactForm({
+                   firstName: '',
+                   lastName: '',
+                   fromZip: '',
+                   toZip: '',
+                   email: ''
+              });
+            }
+            
+        } 
+        catch (error) {
+            setFormSuccess("Error submitting...");
+            setContactForm({
                 firstName: '',
                 lastName: '',
                 fromZip: '',
                 toZip: '',
                 email: ''
            });
+            console.log("Error submitting...", error);
         }
+
     };
 
-
-  
     const sendEmail = async (e) => {
         try {
           await emailjs.sendForm('service_hx0jbdk', 'template_9tzs7jg', e.target, "erPViWxQ1qZOo9WGO");
-          console.log('Email sent successfully');
         } 
         catch (error) {
           console.error('Error sending email:', error);
@@ -70,7 +80,7 @@ const ContactSection = () => {
 
 
     return (
-        <section className="contact-section">
+        <section ref={contactSectionRef} className="contact-section">
                 <div ref={ref} className={`left-contact ${inView ? 'fadeIn' : ''}`}>
                     <h1>Get Your Free Quote</h1>
                     <p>Im a paragraph, you can put things here</p>
@@ -135,6 +145,9 @@ const ContactSection = () => {
                             value={contactForm.email}
                             onChange={handleFormChange}
                         />
+                        {formSuccess &&
+                            <span>{formSuccess}</span>
+                        }
                     </label>
                     <button>Submit</button>
                 </form>

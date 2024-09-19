@@ -1,14 +1,11 @@
-// src/components/FAQ.js
+//React...
 import React, { useState } from 'react';
-//import { faqData } from '../data/faqData';
-
 
 //Styles...
 import '../styles/faqPage.scss'
 
 const FAQ = () => {
 
-    // src/data/faqData.js
     const faqData = [
         {
             question: "What services do professional movers provide?",
@@ -31,9 +28,6 @@ const FAQ = () => {
             answer: "It's recommended to book your move at least 4-6 weeks in advance, especially if you're moving during peak seasons. This ensures availability and allows time to plan and coordinate the details of your move."
         }
     ];
-
-
-
 
     const [activeIndex, setActiveIndex] = useState(null);
 

@@ -1,16 +1,14 @@
+//React...
 import React from 'react';
-
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 //React obserber...
 import { useInView } from 'react-intersection-observer';
-
 
 //Styles...
 import '../styles/Services.scss'
 
 const Services = () => {
-
 
     const location = useLocation()
 
@@ -39,6 +37,7 @@ const Services = () => {
             image: "https://media.angi.com/s3fs-public/_man-unloading-cardboard-box-van-1422164284-.jpg?impolicy=leadImage"
         }
     ];
+
     
     return (
         <section className="services">
@@ -52,17 +51,22 @@ const Services = () => {
                         });
 
                         return (
-                            <div ref={ref} className={`card ${inView ? 'fadeIn' : ""}`}>
+                            <div key={card.title} ref={ref} className={`card ${inView ? 'fadeIn' : ""}`}>
                                 <img src={card.image} alt="" />
                                 <div>
                                     <h2>{card.title}</h2>
                                     <p>{card.description}</p>
-                                    <button>Read More</button>
+                                    {!path &&
+                                        <button>
+                                            <Link to={'/services'}>
+                                                Read More
+                                            </Link>
+                                        </button>
+                                    }
                                 </div>
                             </div>
                         )
-                    })
-                    }    
+                    })}    
                 </div>
         </section>
     );

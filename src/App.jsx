@@ -1,35 +1,39 @@
-import React, { useState } from 'react'
-import './App.scss'
+//React...
+import React, { useRef, useState } from 'react'
 
 //React router...
 import {HashRouter, Routes, Route, Link} from "react-router-dom"
 
-
 //React icons...
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
-
-
+import { FaFacebook, FaInstagram, FaTiktok } from "react-icons/fa";
 
 //Components...
 import Home from './pages/Home'
 import Contact from './pages/Contact';
 import AboutUs from './pages/AboutUs';
 import OurTeam from './pages/OurTeam';
-import Services from './components/Services';
 import ServicesPage from './pages/ServicesPage';
 import MobileNav from './components/MobileNav';
 import FAQ from './pages/FAQpage';
 import ScrollToTop from './components/ScrollToTop';
 
+//Styles...
+import './App.scss'
 
 
 function App() {
 
   const [mobileNav, setMobileNav] = useState(false);
+
+
+  const contactSectionRef = useRef(null)
+
+  const scrollToSection = () => {
+    contactSectionRef.current.scrollIntoView({behavior: 'smooth'})
+  }
   
-
-
   return (
     <div className="app poppins-regular">
       <HashRouter>
@@ -59,7 +63,7 @@ function App() {
               <Link to={'/services'}>Services</Link>
               <Link to={'/contact'}>Contact</Link>
             </ul>
-            <button>Free Quote</button>
+            <button onClick={scrollToSection}>Free Quote</button>
             <div className='hamburger-menu'>
                 <Link to={'/'}>
                   <h2>Next Level Movers</h2>
@@ -87,23 +91,22 @@ function App() {
         </nav>
         <MobileNav mobileNav={mobileNav} setMobileNav={setMobileNav}/>
         <Routes>
-          <Route path="/" element={<Home/>}/>  
-          <Route path="/about-us" element={<AboutUs/>}/>  
-          <Route path="/our-team" element={<OurTeam/>}/>  
-          <Route path="/services" element={<ServicesPage/>}/>  
-          <Route path="/contact" element={<Contact/>}/>  
+          <Route path="/" element={<Home contactSectionRef={contactSectionRef}/>}/>  
+          <Route path="/about-us" element={<AboutUs contactSectionRef={contactSectionRef}/>}/>  
+          <Route path="/our-team" element={<OurTeam contactSectionRef={contactSectionRef}/>}/>  
+          <Route path="/services" element={<ServicesPage contactSectionRef={contactSectionRef}/>}/>  
+          <Route path="/contact" element={<Contact contactSectionRef={contactSectionRef}/>}/>  
           <Route path="/FAQ" element={<FAQ/>}/>  
-
         </Routes>
         <footer>
-          <div className='title-footer'>
+          <div className='title-footer '>
             Next Level Movers
           </div>
           <div className='contact-footer'>
             <h2>Contact</h2>
             <div>
               <span>Phone: 512-731-3636</span>
-              <span>Email: randomemail#gmail.com</span>
+              <span>Email: nextlevelmoverstx@gmail.com</span>
             </div>
           </div>
           <div className='footer-working'>
@@ -115,12 +118,12 @@ function App() {
           <div className='footer-resources'>
             <h2>Resources</h2>
             <ul>
-              <li>Locations</li>
-              <li>FAQ's</li>
+              <Link to={'/contact'} className='hover-glow'>Locations</Link>
+              <Link to={'/FAQ'} className='hover-glow'>FAQ's</Link>
               <li>
-                <span>Face</span>
-                <span>Insta</span>
-                <span>Youtube</span>
+                <a href='$' className='hover-glow'><FaFacebook/></a>
+                <a href='$' className='hover-glow'><FaInstagram/></a>
+                <a href='$' className='hover-glow'><FaTiktok/></a>
               </li>
               
             </ul>
